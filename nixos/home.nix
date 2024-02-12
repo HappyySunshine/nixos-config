@@ -1,8 +1,6 @@
 { config, pkgs, inputs, ... }:
-
 {
         
-  # TODO please change the username & home direcotry to your own
   home.username = "sunshine";
   home.homeDirectory = "/home/sunshine";
    imports = [
@@ -12,8 +10,6 @@
 
       inputs.xremap-flake.homeManagerModules.default
   ];
-
-
   colorScheme = inputs.nix-colors.colorSchemes.dracula;
 
   # link the configuration file in current directory to the specified location in home directory
@@ -29,13 +25,13 @@
   # home.file.".xxx".text = ''
   #     xxx
   # '';
-  # set cursor size and dpi for 4k monitor
-  xresources.properties = {
-    "Xcursor.size" = 16;
-    "Xft.dpi" = 172;
-  };
 
-  # basic configuration of git, please change to your own
+  # set cursor size and dpi for 4k monitor
+ # xresources.properties = {
+ #   "Xcursor.size" = 16;
+ #   "Xft.dpi" = 172;
+ # };
+
   programs.git = {
     enable = true;
     userName = "Happy sunshine";
@@ -67,16 +63,16 @@
     dolphin
     wofi
     inputs.xremap-flake.packages.${system}.default
-            #notify
+    wmctrl
+    mako
+    wl-clipboard
+    shotman
 
-  jdk17
-  appimage-run
-  openshot-qt
-
-  wmctrl
-
+    jdk17
+    appimage-run
+    openshot-qt
     fishnet
-	  stockfish
+	stockfish
   	pavucontrol
   	firewalld
   	xclip
@@ -85,27 +81,18 @@
   	android-tools
 	wireshark
   	tcpdump
-  	# lapce
   	xorg.xmodmap
 	xorg.setxkbmap
-	# xdotool
 	input-remapper
-#	xorg.xev
+	xorg.xev
 	dbus
-      #sway 
    thunderbird
 
+    radare2
   keepassxc
-# WAYLANDDDDDDDD
-  mako
-  wl-clipboard
-  shotman
-    # here is some command line tools I use frequently
-    # feel free to add your own or remove some of them
-    
     neofetch
+    yazi
   #  nnn # terminal file manager
-
     # archives
     zip
     xz
@@ -113,10 +100,10 @@
     p7zip
 
     # utils
-    ripgrep # recursively searches directories for 
+    ripgrep 
     jq # A lightweight and flexible command-line JSON processor
     yq-go # yaml processer https://github.com/mikefarah/yq
- #   exa # A modern replacement for ‘ls’
+    eza # A modern replacement for ‘ls’
     fzf # A command-line fuzzy finder
 
     # networking tools
@@ -140,17 +127,14 @@
     zstd
     gnupg
 
-    # nix related
-    #
     # it provides the command `nom` works just like `nix`
     # with more details log output
     nix-output-monitor
 
-    # productivity
-    hugo # static site generator
-    glow # markdown previewer in terminal
+    # hugo # static site generator
+    # glow # markdown previewer in terminal
 
-    btop  # replacement of htop/nmon
+    btop  
     iotop # io monitoring
     iftop # network monitoring
 
@@ -168,23 +152,17 @@
 
     #gui
     firefox
-    #kate
     discord
     obs-studio
-    #bottles
     lutris
     godot_4
-    #nomacs
     qbittorrent
     gimp
     #blender
-   # krita
+    #krita
     steam
-    #gnome-multi-writer
     q4wine
     android-studio
-    #unityhub
-    #	input-remapper
   ];
 
   
@@ -209,7 +187,6 @@
     };
   };
 
-
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -225,17 +202,6 @@
       urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
     };
   };
-
-  # This value determines the home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update home Manager without changing this value. See
-  # the home Manager release notes for a list of state version
-  # changes in each release.
   home.stateVersion = "24.05";
-
-  # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
