@@ -1,2 +1,0 @@
--- vim.keymap.set('n', '<leader>st', '<cmd>colorscheme Banana-main<CR>', {silent=true})
--- vim.keymap.set('n', '<leader>ca', '<cmd>!na:sm -f elf hello.s  -o hello.o && ld -m elf_i386 -o hello hello.o && ./hello<CR>', {desc="compile assembly"})
