@@ -5,6 +5,7 @@
 { config, pkgs, inputs, ... }:
 
 {
+
   imports =
     [ # Include the results of the hardware scan.
     
@@ -154,7 +155,14 @@ environment.sessionVariables = {
 
  # xdg.portal.enable = true;
  # xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
-  
+
+ fonts.packages = with pkgs; [
+  (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" "JetBrainsMono" ]; })
+];
+
+fonts.fontconfig.defaultFonts= {
+  monospace = ["FiraCode"];
+};
   environment.systemPackages = with pkgs; [
    #WAYLAND AND HYPRLAND
    (pkgs.waybar.overrideAttrs (oldAttrs: {

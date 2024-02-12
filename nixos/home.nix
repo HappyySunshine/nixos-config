@@ -1,6 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
+        
   # TODO please change the username & home direcotry to your own
   home.username = "sunshine";
   home.homeDirectory = "/home/sunshine";
@@ -66,7 +67,7 @@
     dolphin
     wofi
     inputs.xremap-flake.packages.${system}.default
-    notify
+            #notify
 
   jdk17
   appimage-run

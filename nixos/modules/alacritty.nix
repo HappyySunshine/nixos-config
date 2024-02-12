@@ -5,11 +5,26 @@
   programs.alacritty.settings = {
       env.TERM = "xterm-256color";
       font = {
-        size = 12;
+       # size = 12;
+ #       normal.family = "JetBrainsMono";
+  #      normal.style = "regular";
        # draw_bold_text_with_bright_colors = true;
       };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
+      windw.opacity = 0.7;
+
+      beel.animation = "Ease";
+      beel.duration = 2000;
+      beel.color = config.colorScheme.palette.base0D;
+
+      keyboard.binding= [
+      {
+          key = "v";
+          mods = "Control";
+          action = "paste";
+      }
+      ];
     
 
     colors = with config.colorScheme.palette; {
