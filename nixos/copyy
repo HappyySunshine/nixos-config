@@ -1,0 +1,36 @@
+
+        config = {
+            default_mode = "default";
+            virtual_modifiers= ["CapsLock"];
+            keymap = 
+                [
+                {
+                    name = "main remap";
+                    remap = {
+                        super-i = {
+                           # launch = ["${pkgs.libnotify}/bin/notify-send" "switching modes"];
+                            set_mode = "command";
+                        };
+                        super-n = {
+                            launch = ["${pkgs.libnotify}/bin/notify-send" "Please work2"];
+                        };
+                        super-v = {
+                            launch = ["firefox"];
+                        };
+                    };
+
+                        mode = "default";
+                }
+                {
+                    name = "command text";
+                    remap = {
+                        super-i = {
+                            #launch = ["${pkgs.libnotify}/bin/notify-send" "switching to normal mode"];
+                            set_mode = "default";
+                        };
+                    };
+                    mode = "command";
+                }
+                ];
+            
+        };
