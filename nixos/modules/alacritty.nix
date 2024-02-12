@@ -12,11 +12,11 @@
       };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
-      windw.opacity = 0.7;
+      window.opacity = 0.85;
 
-      beel.animation = "Ease";
-      beel.duration = 2000;
-      beel.color = config.colorScheme.palette.base0D;
+      bell.animation = "Ease";
+      bell.duration = 2000;
+      bell.color = "0x${config.colorScheme.palette.base0D}";
 
       keyboard.bindings= [
       {
