@@ -18,7 +18,7 @@
       beel.duration = 2000;
       beel.color = config.colorScheme.palette.base0D;
 
-      keyboard.binding= [
+      keyboard.bindings= [
       {
           key = "v";
           mods = "Control";
