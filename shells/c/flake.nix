@@ -34,7 +34,7 @@
             xorg.libX11
           ];
 
-            CLANGD_PATH = "hello :D";
+            CLANGD_PATH = pkgs.llvmPackages_16.clang-unwrapped;
 
           #LD_LIBRARY_PATH = "${lib.makeLibraryPath buildInputs}";
         };

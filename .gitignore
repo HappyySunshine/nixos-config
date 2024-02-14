@@ -1,0 +1,6 @@
+./scripts/keys.sh
+./shells/a
+./shells/b
+./shells/
+./shells/*
+!./shells/*/

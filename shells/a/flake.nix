@@ -4,7 +4,7 @@
       nixpkgs.url = github:nixos/nixpkgs;
   };
 
-  outputs = { self, nixpkgs }: let 
+  outputs = { self, nixpkgs }@inputs: let 
     system = "x86_64-linux";
     pkgs = import nixpkgs {inherit system;};
     in{
@@ -16,10 +16,5 @@
             src = ./src;
            inherit system;
         };
-        # packages.${system} = {
-        #    myPackage = pkgs.callPackage ./. {};
-        #    default = self.${system}.myPackage;
-        # };
-
   };
 }

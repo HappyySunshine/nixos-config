@@ -127,7 +127,7 @@ environment.sessionVariables = {
 ];
 
 fonts.fontconfig.defaultFonts= {
-  monospace = ["FiraCode"];
+  monospace = ["Hack"];
 };
   environment.systemPackages = with pkgs; [
    #WAYLAND AND HYPRLAND
@@ -137,17 +137,16 @@ fonts.fontconfig.defaultFonts= {
    mako
    libnotify
    hyprpaper
-   swaybg
-   wpaperd
-   mpvpaper
-   swww
+  # swaybg
+  # wpaperd
+  # mpvpaper
+  # swww
    rofi-wayland
-   kitty
+   # kitty
 
     #LSPS
     rnix-lsp
     nixd
-    glibc
     clang-tools_16
     luajitPackages.lua-lsp
 
@@ -156,7 +155,7 @@ fonts.fontconfig.defaultFonts= {
     zsh
     wget
     curl
-    wineWowPackages.full
+  #  wineWowPackages.full
     rust-analyzer-unwrapped
     clang-tools_16
      gparted

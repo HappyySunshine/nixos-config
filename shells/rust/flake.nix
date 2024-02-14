@@ -2,25 +2,27 @@
   description = "A very basic flake";
   inputs = {
       nixpkgs.url = github:nixos/nixpkgs;
+     # nixpkgs2.url = github:nixos/nixpkgs;
   };
 
-  outputs = { self, nixpkgs }: let 
+  outputs = { self, nixpkgs}: let 
     system = "x86_64-linux";
     pkgs = import nixpkgs {inherit system;};
+   # pkgs2 = import nixpkgs2 {inherit system;};
     in{
         devShells."${system}".default = pkgs.mkShell{
-           packages = [pkgs.cargo pkgs.rustc 
-            pkgs.rust-analyzer-unwrapped pkgs.pkg-config-unwrapped pkgs.libclang 
-            pkgs.llvmPackages_rocm.clang-unwrapped pkgs.wayland ];        
+           packages = [pkgs.cargo
+                    pkgs.rustc  # glibc
+                    ];        
 
-           nativeBuildInputs =  [ pkgs.pkg-config pkgs.cargo];
+           nativeBuildInputs =  [ pkgs.pkg-config pkgs.cargo pkgs.ninja pkgs.protobuf ];
            buildInputs = with pkgs;[
             #openssl_3_1
+            gtk4
             openssl_legacy
             dbus
             libxkbcommon
             libGL
-            pkgs.cargo
             alsa-lib
             # ocamlPackages.ssl
             # WINIT_UNIX_BACKEND=wayland
@@ -30,11 +32,23 @@
             xorg.libXrandr
             xorg.libXi
             xorg.libX11
+           # qt6Packages.qxlsx
+            graphene  
+            protobuf
+            sbclPackages.cl-gtk2-glib
+            pkgs.lldb
+          #  pkgs2.lldb   
+            #pkgs.pkg-config-unwrapped
+            pkgs.libclang 
+
           ];
           #CARGO_HOME = "${pkgs.cargo}";
           RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
+         # QT_VERSION_MAJOR = 6;
+            LLDB_LIB= "${pkgs.lldb.lib}";
+            LLDB = pkgs.lldb;
 
-          #LD_LIBRARY_PATH = "${lib.makeLibraryPath buildInputs}";
+          #LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath buildInputs}";
         };
        
      };

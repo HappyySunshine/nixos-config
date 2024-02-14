@@ -25,7 +25,8 @@
                     p.tree-sitter-nix
                     p.tree-sitter-lua
                     p.tree-sitter-bash
-                    nvim-treesitter.withAllGrammars
+                    p.tree-sitter-rust
+                   # nvim-treesitter.withAllGrammars
                 ]));
                 config = luaFile ./plugin/treesitter.lua;
             }
@@ -37,7 +38,16 @@
                 plugin = telescope-nvim;
                 config = luaFile ./plugin/telescope.lua;
             }
+            {
+               plugin = lualine-nvim;
+               config = toLua ''require("lualine").setup()'';
+            }
             dracula-nvim
+            nvim-snippy
+            nvim-dap
+            nvim-dap-ui
+            plenary-nvim
+
           #  telescope-fzf-native-nvim
            # luasnip
          #   friendly-snippets
@@ -53,6 +63,7 @@
 
    ];
    extraLuaConfig =''
+
      ${pkgs.lib.readFile ./lua/nick/remap.lua  } 
      ${pkgs.lib.readFile ./lua/nick/set.lua  } 
      ${pkgs.lib.readFile ./lua/nick/colors.lua  } 

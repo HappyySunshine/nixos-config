@@ -39,7 +39,7 @@
   };
 
    wayland.windowManager.sway = {
-    enable = true;
+    enable = false;
     config = rec {
       modifier = "Mod4"; # Super key
       output = {
@@ -71,25 +71,25 @@
     jdk17
     appimage-run
     openshot-qt
-    fishnet
-	stockfish
-  	pavucontrol
+ #   fishnet
+#	stockfish
+#  	pavucontrol
   	firewalld
   	xclip
 	imagemagick
   	vlc
-  	android-tools
-	wireshark
+  #	android-tools
+#	wireshark
   	tcpdump
   	xorg.xmodmap
 	xorg.setxkbmap
-	input-remapper
+#	input-remapper
 	xorg.xev
 	dbus
    thunderbird
 
     radare2
-  keepassxc
+ #  keepassxc
     neofetch
     yazi
   #  nnn # terminal file manager
@@ -108,24 +108,24 @@
 
     # networking tools
     mtr # A network diagnostic tool
-    iperf3
-    dnsutils  # `dig` + `nslookup`
-    ldns # replacement of `dig`, it provide the command `drill`
+ #   iperf3
+  #  dnsutils  # `dig` + `nslookup`
+  #  ldns # replacement of `dig`, it provide the command `drill`
     aria2 # A lightweight multi-protocol & multi-source command-line download utility
     socat # replacement of openbsd-netcat
     nmap # A utility for network discovery and security auditing
-    ipcalc  # it is a calculator for the IPv4/v6 addresses
+   # ipcalc  # it is a calculator for the IPv4/v6 addresses
 
     # misc
     cowsay
     file
     which
     tree
-    gnused
-    gnutar
-    gawk
-    zstd
-    gnupg
+ #   gnused
+#    gnutar
+  #  gawk
+  #  zstd
+  #  gnupg
 
     # it provides the command `nom` works just like `nix`
     # with more details log output
@@ -135,8 +135,8 @@
     # glow # markdown previewer in terminal
 
     btop  
-    iotop # io monitoring
-    iftop # network monitoring
+  #  iotop # io monitoring
+   iftop # network monitoring
 
     # system call monitoring
     strace # system call monitoring
@@ -144,25 +144,25 @@
     lsof # list open files
 
     # system tools
-    sysstat
+    # sysstat
     lm_sensors # for `sensors` command
-    ethtool
-    pciutils # lspci
-    usbutils # lsusb
+   # ethtool
+   # pciutils # lspci
+   # usbutils # lsusb
 
     #gui
     firefox
     discord
-    obs-studio
+   # obs-studio
     lutris
     godot_4
     qbittorrent
-    gimp
+ #   gimp
     #blender
     #krita
-    steam
-    q4wine
-    android-studio
+   # steam
+   # q4wine
+  #  android-studio
   ];
 
   
@@ -177,7 +177,7 @@
 
   # starship - an customizable prompt for any shell
   programs.starship = {
-    enable = true;
+    enable = false;
     # custom settings
     settings = {
       add_newline = false;
