@@ -93,6 +93,7 @@ require("dapui").setup()
 vim.keymap.set('n', '<Leader>du', function() require('dapui').toggle() end)
 
 
+
 -- vim.keymap.set("n", "<leader>h", require("lsp_lines").toggle, opts)
 
 
@@ -169,6 +170,31 @@ local rust_tools = require('rust-tools')
 
 lldb_exec = concat_if_exist(os.getenv("LLDB"), "/bin/lldb-vscode") 
 lldb_lib = concat_if_exist(os.getenv("LLDB_LIB"), "/lib")
+local dap = require("dap")
+
+
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "${port}",
+  executable = {
+    command = lldb_exec,
+    args = {"--port", "${port}"}
+  }
+}
+
+dap.configurations.rust = {
+  {
+    name = "Rust debug",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = true,
+    showDisassembly = "never"
+  },
+}
 rust_tools.setup({
   server = {
 	    on_attach =function(client, bufnr)
