@@ -40,6 +40,7 @@ services.mysql = {
         # };
       environment.systemPackages = with pkgs; [
       #vdhcoapp
+        btop
         unzip
         imagemagick
       vdhcoapp

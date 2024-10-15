@@ -17,10 +17,11 @@
 
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, hyprland, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, ... }:
   let 
     # pkgs = nixpkgs;
     system = "x86_64-linux";
+    hyprland = inputs.hyprland.packages.${system}.hyprland;
   #import nixpkgs {
       #system = "x86_64-linux";
      # overlays = [ nixgl.overlay ];
@@ -29,13 +30,13 @@
 
       homeConfigurations = (
         import ./home-conf.nix {
-          inherit system nixpkgs home-manager inputs ;
+          inherit  hyprland system nixpkgs home-manager inputs ;
         }
       );
     nixosConfigurations = {
 	nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; }; 
+        specialArgs = { inherit inputs; inherit hyprland;}; 
         modules = [
           ./root/configuration.nix
         ];

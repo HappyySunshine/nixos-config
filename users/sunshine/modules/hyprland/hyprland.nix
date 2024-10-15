@@ -1,7 +1,8 @@
-{ pkgs, lib, ... }: 
+{ pkgs, lib, hyprland, ... }: 
                                                                           
 {
   wayland.windowManager.hyprland.enable = true;
+ wayland.windowManager.hyprland.package = hyprland;
   wayland.windowManager.hyprland.settings = {
   input= {
     kb_layout = "br";
@@ -39,6 +40,9 @@
     animations= {
         enabled = true;
         };
+    misc ={
+    force_default_wallpaper =0;
+        };
 
 
     "$mod" = "SUPER";
@@ -51,6 +55,8 @@
         "$mod, F, exec, firefox"
         "$mod, D, exec, discord"
         "$mod, K, exec, kitty"
+        "$mod, B, exec, pkill waybar"
+        "$mod+CTRL, B, exec, waybar"
 
         ", Print, exec, grimblast copy area"
         "$mod, M, exit"

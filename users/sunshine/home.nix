@@ -7,9 +7,10 @@ in
   # config.colorScheme = inputs.nix-colors.colorSchemes.dracula;
   home.username = "sunshine";
   home.homeDirectory = "/home/sunshine";
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
    imports = [
    # inputs.nix-colors.homeManagerModules.default
+        ./systemd.nix
          ./modules
         # ./../shared/home.nix
 
@@ -23,6 +24,9 @@ in
 
   home.packages = with pkgs; [
    # inputs.xremap-flake.packages.${system}.default
+     hyprpaper
+     hyprlock
+     hypridle
     kitty
     grimblast
    spotify
@@ -83,13 +87,22 @@ steam-run
             }
         \builtin alias cd=__zoxide_z
         \builtin alias zi=__zoxide_zi
-
          eval "$(zoxide init zsh)"
+
          clear
          neofetch
             ''; #.zshrc
         oh-my-zsh={
-            enable = false;
+            extraConfig= "AGNOSTER_PROMPT_SEGMENTS=prompt_git";
+            enable = true;
+            theme =  "agnoster";
+            plugins =[
+                "colorize"
+                "cp"
+                "sudo"
+                "git"
+                
+            ];
         };
         shellAliases= {
             ".." = "cd ..";

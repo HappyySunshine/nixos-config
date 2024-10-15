@@ -1,4 +1,4 @@
-{pkgs, inputs, ...}:
+{pkgs, inputs, hyprland, lib,...}:
 
 {
  
@@ -7,16 +7,16 @@
        security.pam.services.login.enableGnomeKeyring = true;
 	services.xserver.enable =true;
 #	services.xserver.displayManager.gdm.enable = true;
-	services.xserver.desktopManager.gnome.enable = true;
+    services.xserver.desktopManager.gnome.enable = true;
+    services.xserver.desktopManager.plasma5.enable = true ;
+    programs.ssh.askPassword = lib.mkForce "${pkgs.plasma5Packages.ksshaskpass.out}/bin/ksshaskpass";
 
 	systemd.services."getty@tty1".enable = true;
 	systemd.services."autovt@tty1".enable = true;
       programs.hyprland =  {
         enable = true;
-    #    xwayland.enable = true;
-        # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+        package = hyprland;
     };
 
-      # services.xserver.desktopManager.plasma5.enable = true;
         services.xserver.displayManager.sddm.enable = true;
 }
