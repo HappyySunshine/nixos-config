@@ -1,12 +1,12 @@
-{config, pkgs, inputs, lib, ... }:
+{config, pkgs, inputs, lib, username, ... }:
 let 
     nixos_path = "/etc/nixos";
 in
 {
         
   # config.colorScheme = inputs.nix-colors.colorSchemes.dracula;
-  home.username = "sunshine";
-  home.homeDirectory = "/home/sunshine";
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
   home.stateVersion = "24.11";
    imports = [
    # inputs.nix-colors.homeManagerModules.default

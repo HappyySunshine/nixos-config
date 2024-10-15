@@ -119,9 +119,9 @@
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
       programs.zsh.enable = true;
 
-      users.users.sunshine = {
+      users.users.nick = {
         isNormalUser = true;
-        description = "happy sunshine";
+        description = "terror dos hackersss";
         extraGroups = [ "networkmanager" "wheel" "uinput" "input" ];
         shell = pkgs.zsh;
       };
